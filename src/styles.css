@@ -1,0 +1,11 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+}
+ul > li {
+  left: -10px;
+  position: relative;
+}
