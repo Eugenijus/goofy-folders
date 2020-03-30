@@ -1,6 +1,6 @@
 import React from "react";
 
-import { response } from "./data/mockData";
+import { response, responseSmallTree } from "./data/mockData";
 import { HeaderDiv, ContentDiv } from "./components/common/styledComponents";
 import CategoryTree from "./components/CategoryTree";
 import { RENDER_WAYS } from "./components/CategoryTree/constants";
@@ -24,7 +24,10 @@ export default function App() {
       </HeaderDiv>
       <ContentDiv>
         <p>Result tree:</p>
-        <CategoryTree data={response.data} renderType={RENDER_WAYS.RECURSIVE} />
+        <CategoryTree
+          data={responseSmallTree.data}
+          renderType={RENDER_WAYS.ITERATIVE}
+        />
       </ContentDiv>
     </div>
   );

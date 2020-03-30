@@ -3,62 +3,72 @@ import PropTypes from "prop-types";
 
 import NodeView from "./NodeView";
 import { RENDER_WAYS } from "./constants";
+import { BFS } from "../../utils/tree";
+import NodeIterView from "./NodeIterView";
 
 const CategoryTree = ({ data, renderType }) => {
   // BFS, DFS
+  // 0. find JS implementasion of BFS or DFS in google or SO :D
+  // 1. load function from utils
+  // 2. run that function with given data
+  // 3. profit :D
   const renderIteratively = data => {
-    if (data && data[0]) {
-      let currentNode = data[0];
-      const { name } = currentNode;
-      let space = "";
-      let breaker = 0;
-      let parentIndex = 0;
-      let childIndex = 0;
-      let children = [];
-      while (currentNode || breaker > 30) {
-        const { contents } = currentNode;
-        console.log(`${space}- ${name}`);
-        for (let i = 0; i < contents.length; i++) {
-          console.log(`${space}  - ${contents[i].name}`);
-          children = contents[i];
-          // console.log("children", children.contents.length);
-          // if (
-          //   children.contents.length > 0 &&
-          //   childIndex < children.contents.length
-          // ) {
-          //   currentNode = children.contents[childIndex];
-          //   childIndex++;
-          // }
+    // const { name, filetype, contents } = data[0];
+    // loop through all nodes and count
+
+    /**
+     * function traverseDFS(root) {
+        let stack = [root]
+        let res = []
+        
+        while (stack.length) {      
+          let curr = stack.pop()
+          res.push(curr.key)
+          
+          if (curr.right){
+            stack.push(curr.right)
+          }
+          
+          if (curr.left){
+            stack.push(curr.left)
+          }
         }
-        console.log(".");
-        space = space + "  ";
-
-        // while (childIndex < children.contents.length) {
-        //   if (children.contents.length > 0) {
-        //     console.log("children", children);
-        //     //currentNode = currentNode.contents[0];
-        //     childIndex++;
-        //   }
-        // }
-
-        currentNode = null;
-
-        childIndex = 0;
-        breaker++;
+        
+        return res.reverse()
       }
+     *
+     * const root = {
+     * key: 1,
+     * left: { key: 2 },
+     * right: { key: 3 }
+     * };
+     */
+    // loop while still have nodes
+    let stack = data;
+    let res = [];
+    while (stack.length) {
+      let curr = stack.pop();
+      console.log("curr", curr);
+      res.push(curr.name);
+      if (curr.contents && curr.contents.length > 0) {
+        stack.push(...curr.contents);
+      }
+      // for (let i = 0; i < stack.length; i++) {
+      //   const node = stack[i];
+      //   if (node.contents && node.contents.length > 0) {
+      //   } else {
+      //     res.push(stack[i]);
+      //   }
+      // }
     }
-    return null;
+
+    return res.map((name, i) => {
+      return <NodeIterView key={i} name={name} />;
+    });
   };
-  // return (
-  //   <>
-  //     <ul>
-  //       {data.map((node, i) => (
-  //         <NodeView key={i} {...node} />
-  //       ))}
-  //     </ul>
-  //     <ul>{renderIteratively(data)}</ul>
-  //   </>
-  // );
+
+  // do we need preprocessing of data array?
+  //
 
   return renderType === RENDER_WAYS.RECURSIVE ? (
     <ul>

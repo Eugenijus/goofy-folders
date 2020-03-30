@@ -74,3 +74,34 @@ export const response = {
     }
   ]
 };
+
+export const responseSmallTree = {
+  data: [
+    {
+      name: "Lorem",
+      filetype: "FOLDER",
+      contents: [
+        {
+          name: "Ipsum1",
+          filetype: "FOLDER",
+          contents: []
+        },
+        {
+          name: "Ipsum2",
+          filetype: "FOLDER",
+          contents: []
+        }
+      ]
+    },
+    {
+      name: "Ipsum",
+      filetype: "FOLDER",
+      contents: []
+    },
+    {
+      name: "Ipsum2",
+      filetype: "FOLDER",
+      contents: []
+    }
+  ]
+};
