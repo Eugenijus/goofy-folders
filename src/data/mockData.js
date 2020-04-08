@@ -78,28 +78,28 @@ export const response = {
 export const responseSmallTree = {
   data: [
     {
-      name: "Lorem",
+      name: "Lorem1",
       filetype: "FOLDER",
       contents: [
         {
-          name: "Ipsum1",
+          name: "Ipsum2",
           filetype: "FOLDER",
           contents: []
         },
         {
-          name: "Ipsum2",
+          name: "Ipsum3",
           filetype: "FOLDER",
           contents: []
         }
       ]
     },
     {
-      name: "Ipsum",
+      name: "Ipsum4",
       filetype: "FOLDER",
       contents: []
     },
     {
-      name: "Ipsum2",
+      name: "Ipsum5",
       filetype: "FOLDER",
       contents: []
     }
